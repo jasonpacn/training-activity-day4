@@ -30,6 +30,9 @@ function (Controller, MessageToast, MessageBox) {
             var oMobileInput = this.getView().byId("idInputPhone");
             var oCCLabel = this.getView().byId("idLblCC");
             var oCCInput = this.getView().byId("idInputCC");
+
+            MessageToast.show("You selected " + sSelectedKey);
+
             //show the mobile num field
             if (sSelectedKey === "GCASH") {
                 oMobileLabel.setVisible(true);
