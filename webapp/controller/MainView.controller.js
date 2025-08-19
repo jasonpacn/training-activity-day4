@@ -14,8 +14,8 @@ function (Controller, MessageToast, MessageBox) {
         onInit() {
         },
         onAddItem: function (){
-            var oTextBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
-            var sMsg = oTextBundle.getText("addButtonMsg");
+            let oTextBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
+            let sMsg = oTextBundle.getText("addButtonMsg");
             this.fnDisplayMsg(sMsg);
         },
 
@@ -25,11 +25,11 @@ function (Controller, MessageToast, MessageBox) {
         },
 
         onChangeMOP: function (oEvent) {
-            var sSelectedKey = oEvent.getParameter("selectedItem").getProperty("key");
-            var oMobileLabel = this.getView().byId("idLblPhone");
-            var oMobileInput = this.getView().byId("idInputPhone");
-            var oCCLabel = this.getView().byId("idLblCC");
-            var oCCInput = this.getView().byId("idInputCC");
+            let sSelectedKey = oEvent.getParameter("selectedItem").getProperty("key");
+            let oMobileLabel = this.getView().byId("idLblPhone");
+            let oMobileInput = this.getView().byId("idInputPhone");
+            let oCCLabel = this.getView().byId("idLblCC");
+            let oCCInput = this.getView().byId("idInputCC");
 
             MessageToast.show("You selected " + sSelectedKey);
 
@@ -56,16 +56,18 @@ function (Controller, MessageToast, MessageBox) {
             }
         },
         onPressCheckout: function (){
-            var oView = this.getView();
-            var sFName = oView.byId("idInptFName").getValue().trim();
-            var sLName = oView.byId("idInptLName").getValue().trim();
+            let oView = this.getView();
+            let sFName = oView.byId("idInptFName").getValue().trim();
+            let sLName = oView.byId("idInptLName").getValue().trim();
+
+            let oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
 
             if (sFName === "" && sLName === "") {
-                MessageBox.error("Both First Name and Last Name are required.");
+                MessageBox.error(oBundle.getText("checkoutErrorMsg"));
                 return;
             }
 
-            MessageToast.show("Checkout successful!");
+            MessageToast.show(oBundle.getText("checkoutSuccessMsg"));
         },
 
 
